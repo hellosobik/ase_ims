@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% block body %}
+
+<form action="/" method="POST">
+  <div id="adding_stocks">
+    <div class="row container-fluid" style="margin-top: 80px">
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Item Name"
+          name="item_name_0"
+          id="item_name_0"
+        />
+      </div>
+      <div class="col">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Item Quantity"
+          name="item_quantity_0"
+          id="item_quantity_0"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid pt-5">
+    <button type="button" class="btn btn-primary" onclick="add_new_item()">
+      + New Item
+    </button>
+  </div>
+  <div class="container-fluid pt-5">
+    <input type="submit" class="btn btn-primary" ></input>
+  </div>
+</form>
+
+
+
+
+<script>
+  var row_num = 0;
+  function add_new_item() {
+    row_num += 1;
+    var new_item = `
+        
+        <div  class="row container-fluid" style="margin-top: 80px">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Item Name"
+                name="item_name_${row_num}"
+                id="item_name_${row_num}"
+              />
+            </div>
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Item Quantity"
+                name="item_quantity_${row_num}"
+                id="item_quantity_${row_num}"
+              />
+            </div>
+          </div>
+        
+        
+        `;
+    document.getElementById("adding_stocks").insertAdjacentHTML( 'beforeend', new_item );
+  }
+</script>
+
+{% endblock body %}
