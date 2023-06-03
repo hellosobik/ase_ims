@@ -11,6 +11,7 @@ CREATE TABLE create_stock (
 sno integer PRIMARY KEY,
 item_names text NOT NULL,
 item_qtys text NOT NULL,
+
 time text NOT NULL
 )
 

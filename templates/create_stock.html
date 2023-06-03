@@ -3,72 +3,86 @@
 <form action="/" method="POST" class="container-fluid">
   <div id="adding_stocks">
     <div id="unit_0" class="container-fluid">
-    <div class="row container-fluid pt-2">
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Name"
-          name="item_name_0"
-          id="item_name_0"
-        />
-      </div>
-      <div class="col">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Quantity"
-          name="item_quantity_0"
-          id="item_quantity_0"
-        />
-      </div>
-      <div class="col-2">
-        <button id="btn_0" onclick="remove_field(this)" type="button" class="btn btn-dark"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
-          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
-        </svg></button>
+      <div class="row container-fluid pt-2">
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            name="item_name_0"
+            id="item_name_0"
+          />
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Quantity"
+            name="item_quantity_0"
+            id="item_quantity_0"
+          />
+        </div>
+        <div class="col-2">
+          <button
+            id="btn_0"
+            onclick="remove_field(this)"
+            type="button"
+            class="btn btn-dark"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-trash3"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<div class="row container-fluid pt-4 px-4">
-  <div class="col">
-  <input
-          type="text"
-          class="form-control"
-          placeholder="A invest"
-          name="a_invest"
-          id="a_invest"
-        /></div>
-        <div class="col">
-        <input
+  <div class="row container-fluid pt-4 px-4">
+    <div class="col">
+      <input
         type="text"
-        class="form-control "
+        class="form-control"
+        placeholder="A invest"
+        name="a_invest"
+        id="a_invest"
+      />
+    </div>
+    <div class="col">
+      <input
+        type="text"
+        class="form-control"
         placeholder="S invest"
         name="s_invest"
         id="s_invest"
-      /></div>
-      <div class="col-2"></div>
-      </div>
-      <div class="row container-fluid pt-2 ">
-
-        <div class="col-auto container-fluid ">
-          <input type="submit" class="btn btn-primary " ></input>
-        </div>
-
-  <div class="col-auto container-fluid ">
-    <button type="button" class="btn btn-primary pt-2" onclick="add_new_item()">
-      + New Item
-    </button>
+      />
+    </div>
+    <div class="col-2"></div>
   </div>
+  <div class="row container-fluid pt-2">
+    <div class="col-auto container-fluid">
+      <input type="submit" class="btn btn-primary" />
+    </div>
 
-</div>
-
-
-
+    <div class="col-auto container-fluid">
+      <button
+        type="button"
+        class="btn btn-primary pt-2"
+        onclick="add_new_item()"
+      >
+        + New Item
+      </button>
+    </div>
+  </div>
 </form>
-
-
-
 
 <script>
   var row_num = 0;
@@ -104,21 +118,20 @@
         </div>
       </div>
         `;
-    document.getElementById("adding_stocks").insertAdjacentHTML( 'beforeend', new_item );
+    document
+      .getElementById("adding_stocks")
+      .insertAdjacentHTML("beforeend", new_item);
   }
 
-  function remove_field(btn){
-    row_num-=1;
-    text=btn.id;
+  function remove_field(btn) {
+    row_num -= 1;
+    text = btn.id;
     var myArray = text.split("_");
 
     var num = myArray[1];
-    var element = document.getElementById("unit_"+num);
+    var element = document.getElementById("unit_" + num);
 
     element.remove();
-
-
-
   }
 </script>
 
