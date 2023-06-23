@@ -6,11 +6,10 @@ cursor=conn.cursor()
 
 sql_query=["""
 
-CREATE TABLE create_stock (
+CREATE TABLE new_stock (
 
 sno integer PRIMARY KEY,
-item_names text NOT NULL,
-item_qtys text NOT NULL,
+item_names_qty text NOT NULL,
 a_s_invest text NOT NULL,
 time text NOT NULL
 )
@@ -21,8 +20,7 @@ time text NOT NULL
 CREATE TABLE current_stock (
 
 sno integer PRIMARY KEY,
-item_names text NOT NULL,
-item_qtys text NOT NULL,
+item_names_qty text NOT NULL,
 time text NOT NULL
 )
 
@@ -34,8 +32,7 @@ time text NOT NULL
 CREATE TABLE change_in_stock (
 
 sno integer PRIMARY KEY,
-item_names text NOT NULL,
-item_qtys text NOT NULL,
+item_names_qty text NOT NULL,
 person_updated text NOT NULL,
 event text NOT NULL,
 time text NOT NULL
