@@ -1,8 +1,13 @@
 import sqlite3
 import datetime
 conn=sqlite3.connect("ase.sqlite", check_same_thread=False)
-
+from pprint import pprint
 cursor=conn.cursor()
+
+"""
+functions to perform
+create and update operations
+"""
 
 def get_current_stock(time):
     date=str(time).split()[0]
@@ -101,17 +106,13 @@ def push_new_stock(item_names_qty, a_s_invest, time):
     return "new stock push to inventory"
 
 def record_change_in_stock(item_names_qty, person_updated, event, time):
-    
     cursor.execute("""
     INSERT INTO change_in_stock 
     (item_names_qty, person_updated, event, time)
     VALUES (?,?,?,?);
     """, (item_names_qty, person_updated, event, time))
-
     item_names_qty=add_sub(task="sub", item_names_qty=item_names_qty, time=time)
-
     update_current_stock(item_names_qty, time)
-    
     return "change in stock recorded"
 
 def delete_table_data():
@@ -120,12 +121,54 @@ def delete_table_data():
     cursor.execute("DELETE FROM new_stock")
     return("tables erased")
 
+"""
+functions to perform read opeations
+"""
+def read_past_tranctions(num):
+    no_of_rows=int(cursor.execute("SELECT COUNT(*) FROM change_in_stock").fetchone()[0])
+    num1=no_of_rows/10
+    start_id=(num*10)+ 1
+    if num == num1:
+        end_id=no_of_rows 
+    else:
+        end_id=(num+1)*10
+    results=cursor.execute("""SELECT * FROM 
+    change_in_stock WHERE sno 
+    BETWEEN ? AND ?""", 
+    (start_id, end_id)).fetchall()[::-1]
+    return results
 
-item_names_qty=str({"gooday":10, "parle":30})
+def current_day_sale(time, person, qty):
+    date=str(time).split()[0]
+    today=cursor.execute("""SELECT * FROM current_sale
+    WHERE time LIKE '{}%';
+    """.format(date)).fetchall()
+
+    users=cursor.execute("""SELECT DISTINCT person_updated
+     FROM change_in_stock WHERE
+       time LIKE '{}%'""".format(date)).fetchall()
+
+    users_lst=list()
+    for i in users:
+        pprint(i)
+        users_lst.append(i[0])
+
+    if len(today)==0:
+        cursor.execute("""INSERT INTO current_sale
+        (item_person_qty, time) VALUES (?,?) WHERE
+        time LIKE ?;""", ())
+    
+
+    
+    return users_lst
+    
+
+item_names_qty=str({"gooday":1, "parle":3, "bourbon":4, "namkeen":6, "cake":8})
+
 # time=str(datetime.datetime.now())
 a_s_invest=10000
-time='2023-06-28 20:38:49.970614'
-person_updated="sobik"
+time='2023-06-31 20:38:49.970614'
+person_updated="amartya"
 event="sold"
 
 def task():
@@ -143,22 +186,28 @@ def task():
     current_stock_table=cursor.execute("SELECT * FROM current_stock").fetchall()
     new_stock_table=cursor.execute("SELECT * FROM new_stock").fetchall()
     change_in_stock_table=cursor.execute("SELECT * FROM change_in_stock").fetchall()
-    print("current_stock_table")
-    print(current_stock_table)
-    print("new_stock_table")
-    print(new_stock_table)
-    print("change_in_stock_table")
-    print(change_in_stock_table)
+    pprint("current_stock_table")
+    pprint(current_stock_table)
+    pprint("new_stock_table")
+    pprint(new_stock_table)
+    pprint("change_in_stock_table")
+    pprint(change_in_stock_table)
 
     # print(dict(eval(get_current_stock(time)[0][1])))
 
 # delete_table_data()
-task()
-
+# task()
+# pprint(read_past_tranctions(num=1))
+# pprint(cursor.execute("SELECT * FROM current_stock").fetchall())
 # item_names_qty_past=cursor.execute("SELECT * FROM current_stock").fetchall()[-1][-2]
 # print(item_names_qty_past)
 
-conn.commit()
-conn.close()
+# for i in range(0,5):
+#     task()
+
+# pprint(current_day_sale(time=time))
+
+# conn.commit()
+# conn.close()
 
 

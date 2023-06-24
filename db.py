@@ -38,7 +38,16 @@ event text NOT NULL,
 time text NOT NULL
 )
 
-"""         
+""",
+
+"""
+CREATE TABLE current_sale (
+
+sno integer PRIMARY KEY,
+item_person_qty text NOT NULL,
+time text NOT NULL
+)
+ """
            
            ]
 for i in sql_query:
